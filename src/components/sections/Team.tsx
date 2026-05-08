@@ -5,22 +5,22 @@ const team = [
   { 
     name: 'Dr. H. Ahmad Fauzi, M.A.', 
     role: 'Ketua Umum DKM Al-Huda', 
-    image: '/src/assets/images/regenerated_image_1778197611995.png' 
+    image: '/images/regenerated_image_1778197611995.png' 
   },
   { 
     name: 'Ir. H. Bambang Subroto', 
     role: 'Sekretaris Umum', 
-    image: '/src/assets/images/regenerated_image_1778197608461.png' 
+    image: '/images/regenerated_image_1778197608461.png' 
   },
   { 
     name: 'Drs. H. M. Sulaiman', 
     role: 'Bendahara Umum', 
-    image: '/src/assets/images/regenerated_image_1778197615096.png' 
+    image: '/images/regenerated_image_1778197615096.png' 
   },
   { 
     name: 'Ustadz H. Rizky Mubarok', 
     role: 'Bidang Takmir & Ibadah', 
-    image: '/src/assets/images/regenerated_image_1778197653735.png' 
+    image: '/images/regenerated_image_1778197653735.png' 
   },
 ];
 

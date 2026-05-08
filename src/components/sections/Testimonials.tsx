@@ -6,19 +6,19 @@ const testimonials = [
     content: "Di Al-Huda, kenyamanan ibadah bukan sekadar janji. Fasilitas yang modern dipadukan dengan kehangatan warganya membuat saya merasa benar-benar pulang.",
     author: "Pak Andi",
     role: "Warga Kompleks Timah",
-    avatar: "/src/assets/images/regenerated_image_1778197657619.png"
+    avatar: "/images/regenerated_image_1778197657619.png"
   },
   {
     content: "Kajian-kajian yang dihadirkan bukan hanya menenangkan hati, tapi juga membuka wawasan baru tentang Islam yang rahmatan lil alamin.",
     author: "Ibu Rahma",
     role: "Jamaah Rutin",
-    avatar: "/src/assets/images/regenerated_image_1778197660796.png"
+    avatar: "/images/regenerated_image_1778197660796.png"
   },
   {
     content: "Transparansi dan kemudahan dalam berdonasi memberikan ketenangan bagi kami. Senang melihat manfaat nyata dari setiap sedekah yang tersalurkan.",
     author: "Bpk. Heru",
     role: "Donatur",
-    avatar: "/src/assets/images/regenerated_image_1778197664099.png"
+    avatar: "/images/regenerated_image_1778197664099.png"
   }
 ];
 
