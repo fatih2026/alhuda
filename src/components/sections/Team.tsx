@@ -15,12 +15,12 @@ const team = [
   { 
     name: 'Drs. H. M. Sulaiman', 
     role: 'Bendahara Umum', 
-    image: '/images/regenerated_image_1778197615096.png' 
+    image: 'https://images.unsplash.com/photo-1610088441520-4352457e7095?auto=format&fit=crop&q=80&w=400&h=500' 
   },
   { 
     name: 'Ustadz H. Rizky Mubarok', 
     role: 'Bidang Takmir & Ibadah', 
-    image: '/images/regenerated_image_1778197653735.png' 
+    image: 'https://images.unsplash.com/photo-1605664041952-4a2855d9363b?auto=format&fit=crop&q=80&w=400&h=500' 
   },
 ];
 
