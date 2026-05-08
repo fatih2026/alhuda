@@ -13,7 +13,35 @@ import { motion, useScroll, useSpring } from 'motion/react';
 import { MessageCircle, ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+import { CMSProvider } from './lib/CMSContext';
+
+import Admin from './components/Admin';
+
 export default function App() {
+  return (
+    <CMSProvider>
+      <AppRouter />
+    </CMSProvider>
+  );
+}
+
+function AppRouter() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  if (path === '/admin') {
+    return <Admin />;
+  }
+
+  return <AppContent />;
+}
+
+function AppContent() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,

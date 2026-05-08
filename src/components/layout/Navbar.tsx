@@ -12,9 +12,17 @@ const navLinks = [
   { name: 'Kontak', href: '#kontak' },
 ];
 
+import { useCMSContext } from '@/src/lib/CMSContext';
+
 export default function Navbar() {
+  const { content } = useCMSContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const mosqueName = content?.mosqueName || "AL-HUDA";
+  const nameParts = mosqueName.split(' ');
+  const mainName = nameParts[0] + (nameParts[1] ? ' ' + nameParts[1] : '');
+  const subName = nameParts.slice(2).join(' ');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,8 +54,8 @@ export default function Navbar() {
             <span className={cn(
               "font-display font-bold leading-none tracking-tight text-lg uppercase",
               isScrolled ? "text-zinc-900" : "text-zinc-900"
-            )}>AL-HUDA</span>
-            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-emerald-700">Kompleks Timah</span>
+            )}>{mainName}</span>
+            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-emerald-700">{subName}</span>
           </div>
         </a>
 

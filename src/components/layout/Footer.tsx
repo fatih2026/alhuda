@@ -10,7 +10,15 @@ import {
   Facebook
 } from 'lucide-react';
 
+import { useCMSContext } from '@/src/lib/CMSContext';
+
 export default function Footer() {
+  const { content } = useCMSContext();
+  const mosqueName = content?.mosqueName || "AL-HUDA";
+  const nameParts = mosqueName.split(' ');
+  const mainName = nameParts[0] + (nameParts[1] ? ' ' + nameParts[1] : '');
+  const subName = nameParts.slice(2).join(' ');
+
   return (
     <footer className="bg-emerald-50/50 pt-32 pb-12 relative overflow-hidden border-t border-emerald-100">
       <div className="absolute inset-0 islamic-pattern opacity-[0.02]" />
@@ -22,8 +30,8 @@ export default function Footer() {
                  <span className="text-2xl">🕌</span>
                </div>
                <div className="flex flex-col">
-                 <span className="font-display font-bold leading-none tracking-tight text-zinc-900 text-lg uppercase">AL-HUDA</span>
-                 <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-emerald-700">Kompleks Timah</span>
+                 <span className="font-display font-bold leading-none tracking-tight text-zinc-900 text-lg uppercase">{mainName}</span>
+                 <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-emerald-700">{subName}</span>
                </div>
              </div>
              <p className="text-zinc-500 text-sm leading-relaxed mb-10 max-w-sm">
@@ -80,6 +88,7 @@ export default function Footer() {
         <div className="pt-12 border-t border-emerald-100 flex flex-col md:flex-row items-center justify-between gap-8 text-[10px] font-bold tracking-[0.2em] text-zinc-400 uppercase">
            <p>© 2026 MASJID AL-HUDA KOMPLEKS TIMAH.</p>
            <div className="flex items-center gap-6">
+              <a href="/admin" className="hover:text-emerald-600 transition-colors">Admin</a>
               <a href="#" className="hover:text-emerald-600 transition-colors">Privacy</a>
               <a href="#" className="hover:text-emerald-600 transition-colors">Terms</a>
            </div>

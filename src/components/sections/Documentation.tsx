@@ -52,13 +52,6 @@ const gallery = [
     image: '/images/regenerated_image_1778221036855.png',
     span: 'md:col-span-1 md:row-span-1',
   },
-  {
-    id: 8,
-    title: 'Kajian Fiqih Kontemporer',
-    category: 'Kajian',
-    image: 'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=800&q=80',
-    span: 'md:col-span-1 md:row-span-1',
-  },
 ];
 
 const categories = ['Semua', 'Kajian', 'Sosial', 'Ramadhan', 'Qurban'];

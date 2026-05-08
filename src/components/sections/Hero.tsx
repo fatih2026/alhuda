@@ -9,9 +9,19 @@ const stats = [
   { label: 'Santri TPA', value: '150+', icon: GraduationCap },
 ];
 
+import { useCMSContext } from '@/src/lib/CMSContext';
+
 export default function Hero() {
+  const { content } = useCMSContext();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+
+  const hero = content?.hero || {
+    subtitle: "The Modern Islamic Hub",
+    title: "Merangkai Ukhuwah, Menjemput Berkah.",
+    description: "Lebih dari sekadar tempat ibadah, Masjid Al-Huda hadir sebagai rumah bagi setiap jiwa yang mencari keteduhan, ilmu, dan kehangatan persaudaraan di jantung Kompleks Timah.",
+    buttonText: "Jelajahi Program"
+  };
 
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
@@ -42,24 +52,23 @@ export default function Hero() {
             className="flex items-center gap-3 mb-6"
           >
             <span className="h-[1px] w-12 bg-emerald-600"></span>
-            <span className="text-emerald-700 font-semibold tracking-widest text-xs uppercase">The Modern Islamic Hub</span>
+            <span className="text-emerald-700 font-semibold tracking-widest text-xs uppercase">{hero.subtitle}</span>
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-[82px] font-display font-bold text-zinc-900 leading-[1.05] mb-8 tracking-tight">
-            Merangkai Ukhuwah, <br />
+            {hero.title.split(',')[0]}, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-600">
-              Menjemput Berkah.
+              {hero.title.split(',')[1]}
             </span>
           </h1>
           
           <p className="text-lg md:text-xl text-zinc-600 max-w-xl mb-12 leading-relaxed">
-            Lebih dari sekadar tempat ibadah, Masjid Al-Huda hadir sebagai rumah bagi setiap jiwa yang 
-            mencari keteduhan, ilmu, dan kehangatan persaudaraan di jantung Kompleks Timah.
+            {hero.description}
           </p>
 
           <div className="flex flex-wrap items-center gap-6 mb-20">
             <button className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-2xl flex items-center gap-3 shadow-xl hover:bg-emerald-700 transition-all group">
-              Jelajahi Program
+              {hero.buttonText}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <div className="flex -space-x-4 items-center">
