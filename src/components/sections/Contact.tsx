@@ -30,7 +30,7 @@ export default function Contact() {
                  <div className="space-y-10">
                    {[
                      { icon: MapPin, title: 'Alamat Masjid', text: 'Komplek Timah Kelapa Dua, Kec. Cimanggis, Kota Depok, Jawa Barat 16951' },
-                     { icon: Phone, title: 'Layanan Telepon', text: '0812-3456-7890 (Operasional)' },
+                     { icon: Phone, title: 'Layanan Telepon', text: '0817-6707-234 (Operasional)' },
                      { icon: Mail, title: 'Email Resmi', text: 'info@masjidalhuda.id' }
                    ].map((item, i) => (
                      <div key={i} className="flex items-start gap-8 group">

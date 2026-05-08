@@ -21,6 +21,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       >
         <img
+          id="hero-bg-image"
           src="https://images.unsplash.com/photo-1590076212dee-71ec44415893?auto=format&fit=crop&w=1920&q=80"
           alt="Mosque Exterior"
           className="w-full h-full object-cover scale-110"
@@ -81,8 +82,8 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
       >
-        <span className="text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase">Scroll</span>
-        <ChevronDown className="text-emerald-600 w-6 h-6" />
+        <span className="text-[#00b017] text-[10px] font-bold tracking-[0.3em] uppercase">Scroll</span>
+        <ChevronDown className="text-[#00b017] w-6 h-6" />
       </motion.div>
 
       {/* Decorative Ornaments */}

@@ -15,11 +15,31 @@ const prayerTimes = [
 
 export default function PrayerTimes() {
   const [time, setTime] = useState(new Date());
+  const [nextPrayerIndex, setNextPrayerIndex] = useState(-1);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const now = time.getHours() * 60 + time.getMinutes();
+    let found = false;
+    
+    for (let i = 0; i < prayerTimes.length; i++) {
+      const [hours, minutes] = prayerTimes[i].time.split(':').map(Number);
+      const prayerMinutes = hours * 60 + minutes;
+      if (prayerMinutes > now) {
+        setNextPrayerIndex(i);
+        found = true;
+        break;
+      }
+    }
+    
+    if (!found) {
+      setNextPrayerIndex(0); // Next is Imsak tomorrow
+    }
+  }, [time]);
 
   return (
     <section className="py-24 relative overflow-hidden bg-emerald-primary">
@@ -60,7 +80,7 @@ export default function PrayerTimes() {
           {/* Times Grid */}
           <div className="lg:col-span-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {prayerTimes.map((prayer, i) => {
-              const isNext = prayer.name === 'Maghrib'; 
+              const isNext = i === nextPrayerIndex; 
               return (
                 <motion.div
                   key={prayer.name}

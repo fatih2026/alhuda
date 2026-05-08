@@ -75,19 +75,21 @@ export default function App() {
       <Footer />
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-8 right-8 z-[60] flex flex-col gap-4">
+      <div id="floating-actions" className="fixed bottom-8 right-8 z-[60] flex flex-col gap-4">
         {showBackToTop && (
           <motion.button
+            id="back-to-top"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-14 h-14 bg-white/80 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-zinc-100 hover:bg-white transition-all group"
+            className="w-14 h-14 bg-[#16db73] backdrop-blur-md rounded-2xl flex items-center justify-center shadow-2xl border border-zinc-100 hover:opacity-90 transition-all group"
           >
-            <ArrowUp className="w-6 h-6 text-emerald-primary group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp className="w-6 h-6 text-white group-hover:-translate-y-1 transition-transform" />
           </motion.button>
         )}
         <motion.a
-          href="https://wa.me/628123456789"
+          id="whatsapp-link"
+          href="https://wa.me/628176707234"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
