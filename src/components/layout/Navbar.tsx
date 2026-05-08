@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'Sejarah', href: '#sejarah' },
   { name: 'Donasi', href: '#donasi' },
   { name: 'Kontak', href: '#kontak' },
+  { name: 'Admin', href: '/admin' },
 ];
 
 import { useCMSContext } from '@/src/lib/CMSContext';
