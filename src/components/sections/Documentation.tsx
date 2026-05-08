@@ -7,7 +7,7 @@ const gallery = [
     id: 1,
     title: 'Kajian Subuh Berjamaah',
     category: 'Kajian',
-    image: 'https://images.unsplash.com/photo-1542617600-47b59e557671?auto=format&fit=crop&w=800&q=80',
+    image: '/images/regenerated_image_1778220366150.jpg',
     span: 'md:col-span-2 md:row-span-2',
   },
   {
