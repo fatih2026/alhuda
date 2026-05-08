@@ -12,46 +12,60 @@ import {
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
-const programs = [
-  {
-    title: 'Majelis Ilmu',
-    desc: 'Menyelami kedalaman ajaran Islam melalui kajian kitab dan diskusi tematik yang membangun nalar kritis serta akhlakul karimah.',
-    icon: BookOpen,
-    color: 'from-emerald-500 to-emerald-700',
-  },
-  {
-    title: 'Generasi Qur\'ani',
-    desc: 'Membimbing ananda untuk mencintai Al-Qur\'an sejak dini melalui metode Tahsin dan Tahfidz yang interaktif dan menyenangkan.',
-    icon: Baby,
-    color: 'from-blue-500 to-blue-700',
-  },
-  {
-    title: 'Muda-Mudi Al-Huda',
-    desc: 'Ruang kolaborasi bagi pemuda muslim untuk berkarya, berorganisasi, dan menebar manfaat dalam semangat ukhuwah islamiya.',
-    icon: Zap,
-    color: 'from-orange-500 to-orange-700',
-  },
-  {
-    title: 'Khidmat Sosial',
-    desc: 'Wujud kepedulian nyata bagi sesama melalui penyaluran bantuan rutin yang transparan dan tepat sasaran bagi mereka yang membutuhkan.',
-    icon: Heart,
-    color: 'from-rose-500 to-rose-700',
-  },
-  {
-    title: 'Idul Qurban',
-    desc: 'Memfasilitasi ibadah kurban mulai dari penyediaan hewan, penyembelihan yang syar\'i, hingga distribusi daging yang amanah bagi yang berhak.',
-    icon: Moon,
-    color: 'from-amber-600 to-amber-800',
-  },
-  {
-    title: 'Sentra Ummah',
-    desc: 'Layanan holistik mulai dari bimbingan ibadah hingga bantuan pemulasaran jenazah sebagai bentuk pengabdian penuh untuk jamaah.',
-    icon: Users,
-    color: 'from-zinc-500 to-zinc-700',
-  },
-];
+const iconMap: Record<string, any> = {
+  BookOpen, 
+  Users, 
+  Heart, 
+  Baby, 
+  Moon, 
+  Zap, 
+  Clock, 
+  Calendar
+};
+
+import { useCMSContext } from '@/src/lib/CMSContext';
 
 export default function Services() {
+  const { content } = useCMSContext();
+  
+  const programsData = content?.programs || [
+    {
+      title: 'Majelis Ilmu',
+      desc: 'Menyelami kedalaman ajaran Islam melalui kajian kitab dan diskusi tematik yang membangun nalar kritis serta akhlakul karimah.',
+      icon: 'BookOpen',
+      color: 'from-emerald-500 to-emerald-700',
+    },
+    {
+      title: 'Generasi Qur\'ani',
+      desc: 'Membimbing ananda untuk mencintai Al-Qur\'an sejak dini melalui metode Tahsin dan Tahfidz yang interaktif dan menyenangkan.',
+      icon: 'Baby',
+      color: 'from-blue-500 to-blue-700',
+    },
+    {
+      title: 'Muda-Mudi Al-Huda',
+      desc: 'Ruang kolaborasi bagi pemuda muslim untuk berkarya, berorganisasi, dan menebar manfaat dalam semangat ukhuwah islamiya.',
+      icon: 'Zap',
+      color: 'from-orange-500 to-orange-700',
+    },
+    {
+      title: 'Khidmat Sosial',
+      desc: 'Wujud kepedulian nyata bagi sesama melalui penyaluran bantuan rutin yang transparan dan tepat sasaran bagi mereka yang membutuhkan.',
+      icon: 'Heart',
+      color: 'from-rose-500 to-rose-700',
+    },
+    {
+      title: 'Idul Qurban',
+      desc: 'Memfasilitasi ibadah kurban mulai dari penyediaan hewan, penyembelihan yang syar\'i, hingga distribusi daging yang amanah bagi yang berhak.',
+      icon: 'Moon',
+      color: 'from-amber-600 to-amber-800',
+    },
+    {
+      title: 'Sentra Ummah',
+      desc: 'Layanan holistik mulai dari bimbingan ibadah hingga bantuan pemulasaran jenazah sebagai bentuk pengabdian penuh untuk jamaah.',
+      icon: 'Users',
+      color: 'from-zinc-500 to-zinc-700',
+    },
+  ];
   return (
     <section id="program" className="py-32 relative bg-emerald-primary overflow-hidden">
       {/* Decorative bg */}
@@ -84,43 +98,46 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programs.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group p-10 rounded-[3rem] glass-emerald hover:border-emerald-200 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-                <p.icon className="w-24 h-24 text-emerald-900" />
-              </div>
-
-              <div className={cn(
-                "w-16 h-16 rounded-2xl flex items-center justify-center mb-10 bg-gradient-to-br shadow-lg group-hover:scale-110 transition-transform relative z-10",
-                p.color
-              )}>
-                <p.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-display font-bold text-zinc-800 mb-4 group-hover:text-emerald-600 transition-colors relative z-10">
-                {p.title}
-              </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-10 flex-grow relative z-10">
-                {p.desc}
-              </p>
-              <div className="flex items-center justify-between pt-8 border-t border-emerald-100 relative z-10">
-                <div className="flex items-center gap-3 text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">
-                  <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                  Rutin Mingguan
+          {programsData.map((p: any, i: number) => {
+            const Icon = iconMap[p.icon] || BookOpen;
+            return (
+              <motion.div
+                key={p.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group p-10 rounded-[3rem] glass-emerald hover:border-emerald-200 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+                  <Icon className="w-24 h-24 text-emerald-900" />
                 </div>
-                <button className="w-10 h-10 rounded-full glass flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all group/btn">
-                  <ChevronRight className="w-5 h-5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+
+                <div className={cn(
+                  "w-16 h-16 rounded-2xl flex items-center justify-center mb-10 bg-gradient-to-br shadow-lg group-hover:scale-110 transition-transform relative z-10",
+                  p.color
+                )}>
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-display font-bold text-zinc-800 mb-4 group-hover:text-emerald-600 transition-colors relative z-10">
+                  {p.title}
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-10 flex-grow relative z-10">
+                  {p.desc}
+                </p>
+                <div className="flex items-center justify-between pt-8 border-t border-emerald-100 relative z-10">
+                  <div className="flex items-center gap-3 text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em]">
+                    <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                    Rutin Mingguan
+                  </div>
+                  <button className="w-10 h-10 rounded-full glass flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all group/btn">
+                    <ChevronRight className="w-5 h-5 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Feature banner */}

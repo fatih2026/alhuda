@@ -18,11 +18,11 @@ export function useCMS() {
       });
   }, []);
 
-  const updateContent = async (newContent: any, password: string) => {
+  const updateContent = async (newContent: any, username: string, password: string) => {
     const res = await fetch('/api/content', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password, content: newContent }),
+      body: JSON.stringify({ username, password, content: newContent }),
     });
 
     if (!res.ok) {

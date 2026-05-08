@@ -1,51 +1,66 @@
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
+import { useCMSContext } from '@/src/lib/CMSContext';
+
 export default function Contact() {
+  const { content } = useCMSContext();
+  const contact = content?.contact || {
+    title: 'Pintu Kami Selalu Terbuka.',
+    description: 'Punya pertanyaan seputar program masjid, layanan sosial, atau ingin memberikan saran? Silakan hubungi kami melalui formulir atau kontak di bawah ini.',
+    address: 'Komplek Timah Kelapa Dua, Kec. Cimanggis, Kota Depok, Jawa Barat 16951',
+    phone: '0817-6707-234 (Operasional)',
+    email: 'info@masjidalhuda.id'
+  };
+
+  const contactItems = [
+    { icon: MapPin, title: 'Alamat Masjid', text: contact.address },
+    { icon: Phone, title: 'Layanan Telepon', text: contact.phone },
+    { icon: Mail, title: 'Email Resmi', text: contact.email }
+  ];
+
   return (
     <section id="kontak" className="py-32 bg-emerald-primary relative overflow-hidden">
-      <div className="absolute inset-0 islamic-pattern opacity-[0.03]" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="glass-emerald shadow-xl rounded-[4rem] overflow-hidden border border-emerald-100">
-          <div className="grid lg:grid-cols-2">
-            {/* Contact Info */}
-            <div className="p-12 lg:p-20 bg-emerald-50/30 relative">
-               <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full" />
-               
-               <div className="relative z-10">
-                 <motion.div
-                   initial={{ opacity: 0, x: -20 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                   className="flex items-center gap-3 text-emerald-700 font-bold tracking-[0.3em] text-xs uppercase mb-8"
-                 >
-                   <div className="w-12 h-[1px] bg-emerald-600" />
-                   Connect
-                 </motion.div>
-                 <h2 className="text-4xl md:text-6xl font-display font-bold text-zinc-900 mb-8">Pintu Kami <br /><span className="text-gradient">Selalu Terbuka.</span></h2>
-                 <p className="text-zinc-500 mb-16 max-w-md leading-relaxed text-sm">
-                   Punya pertanyaan seputar program masjid, layanan sosial, atau ingin memberikan saran? 
-                   Silakan hubungi kami melalui formulir atau kontak di bawah ini.
-                 </p>
+       <div className="absolute inset-0 islamic-pattern opacity-[0.03]" />
+       <div className="max-w-7xl mx-auto px-6 relative z-10">
+         <div className="glass-emerald shadow-xl rounded-[4rem] overflow-hidden border border-emerald-100">
+           <div className="grid lg:grid-cols-2">
+             {/* Contact Info */}
+             <div className="p-12 lg:p-20 bg-emerald-50/30 relative">
+                <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full" />
+                
+                <div className="relative z-10">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-3 text-emerald-700 font-bold tracking-[0.3em] text-xs uppercase mb-8"
+                  >
+                    <div className="w-12 h-[1px] bg-emerald-600" />
+                    Connect
+                  </motion.div>
+                  <h2 className="text-4xl md:text-6xl font-display font-bold text-zinc-900 mb-8">
+                    {contact.title.split(' ').slice(0, 2).join(' ')} <br />
+                    <span className="text-gradient">{contact.title.split(' ').slice(2).join(' ')}</span>
+                  </h2>
+                  <p className="text-zinc-500 mb-16 max-w-md leading-relaxed text-sm">
+                    {contact.description}
+                  </p>
 
-                 <div className="space-y-10">
-                   {[
-                     { icon: MapPin, title: 'Alamat Masjid', text: 'Komplek Timah Kelapa Dua, Kec. Cimanggis, Kota Depok, Jawa Barat 16951' },
-                     { icon: Phone, title: 'Layanan Telepon', text: '0817-6707-234 (Operasional)' },
-                     { icon: Mail, title: 'Email Resmi', text: 'info@masjidalhuda.id' }
-                   ].map((item, i) => (
-                     <div key={i} className="flex items-start gap-8 group">
-                       <div className="w-14 h-14 rounded-2xl bg-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-110 shadow-lg shadow-emerald-100 transition-all duration-500">
-                         <item.icon className="w-6 h-6 text-white" />
-                       </div>
-                       <div>
-                         <h4 className="font-bold text-emerald-800 mb-1 uppercase tracking-widest text-[10px] opacity-60">{item.title}</h4>
-                         <p className="text-zinc-600 text-sm leading-relaxed">{item.text}</p>
-                       </div>
-                     </div>
-                   ))}
-                 </div>
-               </div>
-            </div>
+                  <div className="space-y-10">
+                    {contactItems.map((item, i) => (
+                      <div key={i} className="flex items-start gap-8 group">
+                        <div className="w-14 h-14 rounded-2xl bg-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-110 shadow-lg shadow-emerald-100 transition-all duration-500">
+                          <item.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-emerald-800 mb-1 uppercase tracking-widest text-[10px] opacity-60">{item.title}</h4>
+                          <p className="text-zinc-600 text-sm leading-relaxed">{item.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+             </div>
 
             {/* Contact Form */}
             <div className="p-12 lg:p-20 bg-white relative">

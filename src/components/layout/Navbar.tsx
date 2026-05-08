@@ -66,6 +66,13 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => {
+                if (link.href.startsWith('/')) {
+                  e.preventDefault();
+                  window.history.pushState({}, '', link.href);
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }
+              }}
               className={cn(
                 "text-sm font-medium transition-all duration-300 hover:text-emerald-600 relative group",
                 isScrolled ? "text-zinc-700" : "text-zinc-700"
@@ -103,7 +110,14 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                if (link.href.startsWith('/')) {
+                  e.preventDefault();
+                  window.history.pushState({}, '', link.href);
+                  window.dispatchEvent(new PopStateEvent('popstate'));
+                }
+              }}
               className="text-lg font-medium text-zinc-900 hover:text-emerald-600 px-4 py-2 hover:bg-emerald-50 rounded-xl transition-all"
             >
               {link.name}

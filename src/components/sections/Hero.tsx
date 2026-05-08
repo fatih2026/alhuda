@@ -1,14 +1,13 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowRight, ChevronDown, Users, Calendar, Heart, GraduationCap } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ChevronDown, 
+  Users, 
+  Calendar, 
+  Heart, 
+  GraduationCap 
+} from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-
-const stats = [
-  { label: 'Jamaah Aktif', value: '1.2k+', icon: Users },
-  { label: 'Program Mingguan', value: '12+', icon: Calendar },
-  { label: 'Kegiatan Sosial', value: '8+', icon: Heart },
-  { label: 'Santri TPA', value: '150+', icon: GraduationCap },
-];
-
 import { useCMSContext } from '@/src/lib/CMSContext';
 
 export default function Hero() {
@@ -22,6 +21,12 @@ export default function Hero() {
     description: "Lebih dari sekadar tempat ibadah, Masjid Al-Huda hadir sebagai rumah bagi setiap jiwa yang mencari keteduhan, ilmu, dan kehangatan persaudaraan di jantung Kompleks Timah.",
     buttonText: "Jelajahi Program"
   };
+
+  const stats = content?.stats || [
+    { label: 'Jamaah Aktif', value: '1.2k+' },
+    { label: 'Program Sosial', value: '24+' },
+    { label: 'Santri TPA', value: '150+' },
+  ];
 
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
@@ -66,19 +71,18 @@ export default function Hero() {
             {hero.description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 mb-20">
+          <div className="flex flex-wrap items-center gap-12 mb-20">
             <button className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-2xl flex items-center gap-3 shadow-xl hover:bg-emerald-700 transition-all group">
               {hero.buttonText}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <div className="flex -space-x-4 items-center">
-              <div className="w-12 h-12 rounded-full border-2 border-white bg-emerald-100/80 backdrop-blur-sm" />
-              <div className="w-12 h-12 rounded-full border-2 border-white bg-emerald-200/80 backdrop-blur-sm" />
-              <div className="w-12 h-12 rounded-full border-2 border-white bg-emerald-300/80 backdrop-blur-sm" />
-              <div className="pl-8 flex flex-col justify-center">
-                <span className="text-sm font-display font-bold text-zinc-900 tracking-tight">1,250+ Jamaah</span>
-                <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Aktif Berkontribusi</span>
-              </div>
+            <div className="flex gap-8">
+              {stats.map((stat: any, idx: number) => (
+                <div key={idx} className="flex flex-col">
+                  <span className="text-xl md:text-2xl font-display font-bold text-zinc-900 tracking-tight">{stat.value}</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-widest leading-none mt-1">{stat.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

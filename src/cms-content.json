@@ -5,5 +5,112 @@
     "title": "Merangkai Ukhuwah, Menjemput Berkah.",
     "description": "Lebih dari sekadar tempat ibadah, Masjid Al-Huda hadir sebagai rumah bagi setiap jiwa yang mencari keteduhan, ilmu, dan kehangatan persaudaraan di jantung Kompleks Timah.",
     "buttonText": "Jelajahi Program"
-  }
+  },
+  "stats": [
+    { "label": "Jamaah Aktif", "value": "1.2k+" },
+    { "label": "Program Sosial", "value": "24+" },
+    { "label": "Santri TPA", "value": "150+" }
+  ],
+  "programs": [
+    {
+      "title": "Majelis Ilmu",
+      "desc": "Menyelami kedalaman ajaran Islam melalui kajian kitab dan diskusi tematik yang membangun nalar kritis serta akhlakul karimah.",
+      "icon": "BookOpen",
+      "color": "from-emerald-500 to-emerald-700"
+    },
+    {
+      "title": "Generasi Qur'ani",
+      "desc": "Membimbing ananda untuk mencintai Al-Qur'an sejak dini melalui metode Tahsin dan Tahfidz yang interaktif dan menyenangkan.",
+      "icon": "Baby",
+      "color": "from-blue-500 to-blue-700"
+    },
+    {
+      "title": "Muda-Mudi Al-Huda",
+      "desc": "Ruang kolaborasi bagi pemuda muslim untuk berkarya, berorganisasi, dan menebar manfaat dalam semangat ukhuwah islamiya.",
+      "icon": "Zap",
+      "color": "from-orange-500 to-orange-700"
+    },
+    {
+      "title": "Khidmat Sosial",
+      "desc": "Wujud kepedulian nyata bagi sesama melalui penyaluran bantuan rutin yang transparan dan tepat sasaran bagi mereka yang membutuhkan.",
+      "icon": "Heart",
+      "color": "from-rose-500 to-rose-700"
+    },
+    {
+      "title": "Idul Qurban",
+      "desc": "Memfasilitasi ibadah kurban mulai dari penyediaan hewan, penyembelihan yang syar'i, hingga distribusi daging yang amanah bagi yang berhak.",
+      "icon": "Moon",
+      "color": "from-amber-600 to-amber-800"
+    },
+    {
+      "title": "Sentra Ummah",
+      "desc": "Layanan holistik mulai dari bimbingan ibadah hingga bantuan pemulasaran jenazah sebagai bentuk pengabdian penuh untuk jamaah.",
+      "icon": "Users",
+      "color": "from-zinc-500 to-zinc-700"
+    }
+  ],
+  "history": [
+    { "year": "1985", "title": "Awal Perjuangan", "desc": "Peletakan batu pertama Musholla kecil yang menjadi saksi bisu semangat gotong royong warga Kompleks Timah." },
+    { "year": "1995", "title": "Tumbuh Bersama", "desc": "Renovasi besar pertama untuk menyambut jamaah yang kian bertambah, ditandai dengan hadirnya kubah hijau yang ikonik." },
+    { "year": "2010", "title": "Menjadi Masjid Jami", "desc": "Transformasi dari Musholla menjadi Masjid Jami denga fasilitas yang lebih lengkap untuk melayani umat lebih luas." },
+    { "year": "2023", "title": "Era Modernisasi", "desc": "Digitalisasi layanan dan pembaharuan fasilitas demi kenyamanan ibadah di era modern tanpa meninggalkan nilai luhur." }
+  ],
+  "contact": {
+    "title": "Pintu Kami Selalu Terbuka.",
+    "description": "Punya pertanyaan seputar program masjid, layanan sosial, atau ingin memberikan saran? Silakan hubungi kami melalui formulir atau kontak di bawah ini.",
+    "address": "Komplek Timah Kelapa Dua, Kec. Cimanggis, Kota Depok, Jawa Barat 16951",
+    "phone": "0817-6707-234 (Operasional)",
+    "email": "info@masjidalhuda.id"
+  },
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Kajian Subuh Berjamaah",
+      "category": "Kajian",
+      "image": "/images/regenerated_image_1778220366150.jpg",
+      "span": "md:col-span-2 md:row-span-2"
+    },
+    {
+      "id": 2,
+      "title": "Penyaluran Paket Zakat",
+      "category": "Sosial",
+      "image": "/images/regenerated_image_1778221023421.jpg",
+      "span": "md:col-span-1 md:row-span-1"
+    },
+    {
+      "id": 3,
+      "title": "Ibadah Tarawih Khidmat",
+      "category": "Ramadhan",
+      "image": "/images/regenerated_image_1778221024762.webp",
+      "span": "md:col-span-1 md:row-span-2"
+    },
+    {
+      "id": 4,
+      "title": "Bakti Bersih Lingkungan",
+      "category": "Sosial",
+      "image": "/images/regenerated_image_1778221026139.png",
+      "span": "md:col-span-1 md:row-span-1"
+    },
+    {
+      "id": 5,
+      "title": "Pelaksanaan Idul Qurban",
+      "category": "Qurban",
+      "image": "/images/regenerated_image_1778221030078.png",
+      "span": "md:col-span-2 md:row-span-1"
+    },
+    {
+      "id": 6,
+      "title": "Tahsin & Quranic Class",
+      "category": "Kajian",
+      "image": "/images/regenerated_image_1778221033587.png",
+      "span": "md:col-span-1 md:row-span-1"
+    },
+    {
+      "id": 7,
+      "title": "Layanan Kesehatan Gratis",
+      "category": "Sosial",
+      "image": "/images/regenerated_image_1778221036855.png",
+      "span": "md:col-span-1 md:row-span-1"
+    }
+  ]
 }

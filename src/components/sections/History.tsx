@@ -1,14 +1,17 @@
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 
-const history = [
-  { year: '1985', title: 'Awal Perjuangan', desc: 'Peletakan batu pertama Musholla kecil yang menjadi saksi bisu semangat gotong royong warga Kompleks Timah.' },
-  { year: '1995', title: 'Tumbuh Bersama', desc: 'Renovasi besar pertama untuk menyambut jamaah yang kian bertambah, ditandai dengan hadirnya kubah hijau yang ikonik.' },
-  { year: '2010', title: 'Menjadi Masjid Jami', desc: 'Transformasi dari Musholla menjadi Masjid Jami denga fasilitas yang lebih lengkap untuk melayani umat lebih luas.' },
-  { year: '2023', title: 'Era Modernisasi', desc: 'Digitalisasi layanan dan pembaharuan fasilitas demi kenyamanan ibadah di era modern tanpa meninggalkan nilai luhur.' },
-];
+import { useCMSContext } from '@/src/lib/CMSContext';
 
 export default function History() {
+  const { content } = useCMSContext();
+  const historyData = content?.history || [
+    { year: '1985', title: 'Awal Perjuangan', desc: 'Peletakan batu pertama Musholla kecil yang menjadi saksi bisu semangat gotong royong warga Kompleks Timah.' },
+    { year: '1995', title: 'Tumbuh Bersama', desc: 'Renovasi besar pertama untuk menyambut jamaah yang kian bertambah, ditandai dengan hadirnya kubah hijau yang ikonik.' },
+    { year: '2010', title: 'Menjadi Masjid Jami', desc: 'Transformasi dari Musholla menjadi Masjid Jami denga fasilitas yang lebih lengkap untuk melayani umat lebih luas.' },
+    { year: '2023', title: 'Era Modernisasi', desc: 'Digitalisasi layanan dan pembaharuan fasilitas demi kenyamanan ibadah di era modern tanpa meninggalkan nilai luhur.' },
+  ];
+
   return (
     <section id="sejarah" className="py-32 bg-emerald-primary relative overflow-hidden">
        <div className="absolute inset-0 islamic-pattern opacity-[0.03]" />
@@ -33,7 +36,7 @@ export default function History() {
              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1px] bg-emerald-100 hidden md:block" />
              
              <div className="space-y-12 md:space-y-32">
-                {history.map((item, i) => (
+                {historyData.map((item: any, i: number) => (
                    <motion.div
                      key={item.year}
                      initial={{ opacity: 0, y: 50 }}

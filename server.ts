@@ -13,6 +13,7 @@ async function startServer() {
   app.use(express.json());
 
   const CONTENT_PATH = path.join(process.cwd(), "src", "cms-content.json");
+  const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
   const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 
   // API to get content
@@ -27,9 +28,9 @@ async function startServer() {
 
   // API to update content
   app.post("/api/content", (req, res) => {
-    const { password, content } = req.body;
+    const { username, password, content } = req.body;
 
-    if (password !== ADMIN_PASSWORD) {
+    if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
@@ -48,14 +49,34 @@ async function startServer() {
       appType: "spa",
     });
     app.use(vite.middlewares);
+    
+    // Explicitly handle SPA fallback in dev mode for any non-API route
+    app.use("*", async (req, res, next) => {
+      if (req.originalUrl.startsWith("/api")) return next();
+      
+      const url = req.originalUrl;
+      try {
+        let template = fs.readFileSync(path.resolve(process.cwd(), "index.html"), "utf-8");
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ "Content-Type": "text/html" }).end(template);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
+      }
+    });
   } else {
-    const distPath = path.join(process.cwd(), "dist");
-    if (fs.existsSync(distPath)) {
-      app.use(express.static(distPath));
-      app.get("*", (req, res) => {
-        res.sendFile(path.join(distPath, "index.html"));
-      });
-    }
+    const distPath = path.resolve(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.use("*", (req, res, next) => {
+      if (req.originalUrl.startsWith("/api")) return next();
+      
+      const indexPath = path.join(distPath, "index.html");
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(404).send("Production build not found. Please run npm run build.");
+      }
+    });
   }
 
   app.listen(PORT, "0.0.0.0", () => {

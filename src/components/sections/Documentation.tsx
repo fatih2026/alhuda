@@ -2,66 +2,27 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Camera, ExternalLink, Play } from 'lucide-react';
 
-const gallery = [
-  {
-    id: 1,
-    title: 'Kajian Subuh Berjamaah',
-    category: 'Kajian',
-    image: '/images/regenerated_image_1778220366150.jpg',
-    span: 'md:col-span-2 md:row-span-2',
-  },
-  {
-    id: 2,
-    title: 'Penyaluran Paket Zakat',
-    category: 'Sosial',
-    image: '/images/regenerated_image_1778221023421.jpg',
-    span: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    id: 3,
-    title: 'Ibadah Tarawih Khidmat',
-    category: 'Ramadhan',
-    image: '/images/regenerated_image_1778221024762.webp',
-    span: 'md:col-span-1 md:row-span-2',
-  },
-  {
-    id: 4,
-    title: 'Bakti Bersih Lingkungan',
-    category: 'Sosial',
-    image: '/images/regenerated_image_1778221026139.png',
-    span: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    id: 5,
-    title: 'Pelaksanaan Idul Qurban',
-    category: 'Qurban',
-    image: '/images/regenerated_image_1778221030078.png',
-    span: 'md:col-span-2 md:row-span-1',
-  },
-  {
-    id: 6,
-    title: 'Tahsin & Quranic Class',
-    category: 'Kajian',
-    image: '/images/regenerated_image_1778221033587.png',
-    span: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    id: 7,
-    title: 'Layanan Kesehatan Gratis',
-    category: 'Sosial',
-    image: '/images/regenerated_image_1778221036855.png',
-    span: 'md:col-span-1 md:row-span-1',
-  },
-];
-
-const categories = ['Semua', 'Kajian', 'Sosial', 'Ramadhan', 'Qurban'];
+import { useCMSContext } from '@/src/lib/CMSContext';
 
 export default function Documentation() {
+  const { content } = useCMSContext();
   const [activeCategory, setActiveCategory] = useState('Semua');
 
+  const galleryItems = content?.gallery || [
+    {
+      id: 1,
+      title: 'Kajian Subuh Berjamaah',
+      category: 'Kajian',
+      image: '/images/regenerated_image_1778220366150.jpg',
+      span: 'md:col-span-2 md:row-span-2',
+    }
+  ];
+
+  const categories = ['Semua', ...Array.from(new Set(galleryItems.map((item: any) => item.category)))];
+
   const filteredGallery = activeCategory === 'Semua' 
-    ? gallery 
-    : gallery.filter(item => item.category === activeCategory);
+    ? galleryItems 
+    : galleryItems.filter((item: any) => item.category === activeCategory);
 
   return (
     <section id="dokumentasi" className="py-32 bg-emerald-primary overflow-hidden">

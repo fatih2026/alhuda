@@ -88,9 +88,19 @@ export default function Footer() {
         <div className="pt-12 border-t border-emerald-100 flex flex-col md:flex-row items-center justify-between gap-8 text-[10px] font-bold tracking-[0.2em] text-zinc-400 uppercase">
            <p>© 2026 MASJID AL-HUDA KOMPLEKS TIMAH.</p>
            <div className="flex items-center gap-6">
-              <a href="/admin" className="hover:text-emerald-600 transition-colors">Admin</a>
-              <a href="#" className="hover:text-emerald-600 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-emerald-600 transition-colors">Terms</a>
+             <a 
+               href="/admin" 
+               onClick={(e) => {
+                 e.preventDefault();
+                 window.history.pushState({}, '', '/admin');
+                 window.dispatchEvent(new PopStateEvent('popstate'));
+               }}
+               className="hover:text-emerald-600 transition-colors"
+             >
+               Admin
+             </a>
+             <a href="#" className="hover:text-emerald-600 transition-colors">Privacy</a>
+             <a href="#" className="hover:text-emerald-600 transition-colors">Terms</a>
            </div>
         </div>
       </div>
